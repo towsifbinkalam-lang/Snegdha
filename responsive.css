@@ -1,0 +1,51 @@
+/* ===== রেসপন্সিভ ডিজাইন ===== */
+
+/* ট্যাবলেট (১০২৪px এবং নিচে) */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 3rem; }
+  .wishes { padding: 60px 24px; }
+}
+
+/* ছোট ট্যাবলেট (৭৬৮px এবং নিচে) */
+@media (max-width: 768px) {
+  h2 { font-size: 1.7rem; }
+
+  .hero h1 { font-size: 2.5rem; }
+  .subtitle { font-size: 1.05rem; }
+
+  .wish-grid { grid-template-columns: 1fr; }
+
+  .letter-sheet { max-width: 620px; }
+}
+
+/* মোবাইল (৪৮০px এবং নিচে) */
+@media (max-width: 480px) {
+  .hero { padding: 30px 16px; }
+  .hero h1 { font-size: 2rem; }
+  .hero { gap: 30px; }
+
+  .hero-buttons,
+  .download-box { flex-direction: column; align-items: stretch; }
+
+  .btn { width: 100%; text-align: center; }
+
+
+  .envelope { width: 230px; height: 150px; }
+  .env-flap { height: 84px; }
+  .envelope.open { margin-top: 84px; }
+
+  .letter-section { padding: 50px 10px 70px; }
+
+  .thanks-box { padding: 24px 16px; margin-top: 34px; }
+  .thanks-box h3 { font-size: 1.45rem; }
+  .thanks-actions { flex-direction: column; align-items: stretch; }
+
+  /* মোবাইলে লেখা যেন পড়া যায়, তাই ফন্ট ন্যূনতম ১৫px (script.js-এ);
+     লেখা বেশি হলে পৃষ্ঠার সংখ্যা নিজে থেকে বেড়ে যায় */
+  .letter-sheet { border-radius: 2px; }
+}
+
+/* ল্যান্ডস্কেপ মোবাইল */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: auto; padding: 50px 20px; }
+}

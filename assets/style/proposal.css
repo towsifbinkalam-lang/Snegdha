@@ -1,0 +1,353 @@
+/* =====================================================
+   💌 "ঘুরতে যাবে?" প্রস্তাবের অংশ: নিজে থেকেই চলে, আলাদা ফাইল
+   সব নাম pq- দিয়ে শুরু, তাই সাইটের অন্য ডিজাইনের সাথে গোলমাল হয় না।
+   ===================================================== */
+
+/* ===== সেকশনের পেছনের রং (চিঠির অংশের সাথে মেলানো) ===== */
+.proposal-section {
+  padding: 70px 16px 90px;
+  background: linear-gradient(180deg, #e4e6d6 0%, #efe3dc 45%, #ecd9d2 100%);
+}
+
+/* আলাদা পাতা হিসেবে (proposal.html) খুললে */
+.pq-page {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 30px 16px;
+  background: linear-gradient(180deg, #efe3dc 0%, #e3cfc8 100%);
+}
+
+.pq-page #proposalRoot { width: 100%; max-width: 480px; }
+
+.pq, .pq * { box-sizing: border-box; }
+
+.pq {
+  --pq-ink: #2a2622;
+  --pq-muted: #85796f;
+  --pq-red: #d6453a;
+  --pq-sage: #a9c79c;
+  --pq-sage-d: #2f4a2c;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  font-family: 'Hind Siliguri', sans-serif;
+  color: var(--pq-ink);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ওপরের ছোট ট্যাগ */
+.pq-pill {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, .85);
+  border: 1px solid #ecd4cf;
+  color: var(--pq-red);
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+/* ===== কার্ড ===== */
+.pq-card {
+  position: relative;
+  margin-top: 18px;
+  padding: 34px 26px 28px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 251, 247, .84));
+  border: 1px solid rgba(255, 255, 255, .95);
+  box-shadow: 0 26px 54px rgba(120, 80, 70, .2), inset 0 1px 0 #fff;
+  animation: pq-in .55s cubic-bezier(.2, .8, .25, 1) both;
+}
+@keyframes pq-in {
+  from { opacity: 0; transform: translateY(18px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.pq-eyebrow {
+  font-size: .78rem;
+  letter-spacing: .12em;
+  color: #6d625b;
+  font-weight: 600;
+}
+
+.pq-title {
+  margin: 8px 0 6px;
+  font-family: 'Tiro Bangla', 'Hind Siliguri', serif;
+  font-weight: 400;
+  font-size: clamp(1.85rem, 7vw, 2.6rem);
+  line-height: 1.28;
+  color: #231f1c;
+}
+.pq-title em {
+  color: var(--pq-red);
+  font-style: italic;
+}
+
+.pq-sub {
+  min-height: 1.6em;
+  font-size: .95rem;
+  color: var(--pq-muted);
+  transition: opacity .2s;
+}
+
+/* কতবার পালিয়েছে */
+.pq-counter {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  padding: 3px 11px;
+  border-radius: 50px;
+  background: #fff;
+  border: 1px solid #ecd4cf;
+  color: var(--pq-muted);
+  font-size: .74rem;
+  animation: pq-pop .3s ease both;
+}
+@keyframes pq-pop { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* ===== ফুলের পাখা (ঘোরে) ===== */
+.pq-flower {
+  display: block;
+  width: 118px;
+  height: auto;
+  margin: 10px auto 6px;
+  overflow: visible;
+}
+.pq-spin {
+  transform-origin: 60px 60px;
+  animation: pq-rotate 7s linear infinite;
+}
+.pq-fast .pq-spin { animation-duration: .9s; }
+@keyframes pq-rotate { to { transform: rotate(360deg); } }
+.pq-sway { transform-origin: 60px 150px; animation: pq-sway 3.4s ease-in-out infinite alternate; }
+@keyframes pq-sway { from { transform: rotate(-2.5deg); } to { transform: rotate(2.5deg); } }
+
+/* ===== হ্যাঁ / না ===== */
+.pq-actions {
+  position: relative;
+  height: 64px;
+  margin-top: 14px;
+}
+.pq-yes {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(100% - 82px);
+  height: 56px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #b7d3a9, #98ba89);
+  color: var(--pq-sage-d);
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(80, 120, 70, .28), inset 0 1px 0 rgba(255, 255, 255, .6);
+  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), box-shadow .2s;
+}
+.pq-yes:hover { box-shadow: 0 12px 24px rgba(80, 120, 70, .38), inset 0 1px 0 rgba(255, 255, 255, .6); }
+
+.pq-no {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid #efd3ce;
+  background: #fff;
+  color: var(--pq-red);
+  font-family: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(120, 80, 70, .15);
+  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), opacity .3s;
+  touch-action: none;
+  z-index: 2;
+}
+
+/* ===== বাটন (লাল) ===== */
+.pq-cta {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 13px 26px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #e0553f, #cf3d2e);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.02rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(207, 61, 46, .32);
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+}
+.pq-cta:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(207, 61, 46, .4); }
+.pq-cta:disabled {
+  background: #cfd9c8;
+  color: #7a8a72;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ===== দিন / সময় / প্ল্যান ===== */
+.pq-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+  text-align: left;
+}
+.pq-field label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: #6d625b;
+}
+.pq-field input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #e8d9d3;
+  border-radius: 12px;
+  background: #fffdfb;
+  font-family: inherit;
+  font-size: .95rem;
+  color: var(--pq-ink);
+}
+.pq-field input:focus { outline: 2px solid #c9dcbf; outline-offset: 1px; }
+
+.pq-plan-title {
+  margin: 18px 0 8px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: #6d625b;
+}
+.pq-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.pq-chip {
+  padding: 8px 14px;
+  border-radius: 50px;
+  border: 1px solid #e8dcd5;
+  background: #f3ece6;
+  color: #4a413b;
+  font-family: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .15s, background .15s, color .15s;
+}
+.pq-chip:hover { transform: translateY(-2px); }
+.pq-chip.on { background: var(--pq-red); border-color: var(--pq-red); color: #fff; }
+
+/* ===== চিঠি ===== */
+.pq-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 14px 0 16px;
+}
+.pq-meta span {
+  padding: 5px 12px;
+  border-radius: 50px;
+  background: #f3ece6;
+  border: 1px solid #e8dcd5;
+  font-size: .82rem;
+  font-weight: 600;
+}
+.pq-letter {
+  position: relative;
+  padding: 24px 20px 20px;
+  border: 1px solid #eee3d9;
+  border-radius: 16px;
+  background: #fffdf8;
+  text-align: left;
+  font-family: 'Tiro Bangla', 'Hind Siliguri', serif;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+.pq-letter p { margin: 0 0 .7em; }
+.pq-letter .pq-sign { color: var(--pq-red); margin-bottom: 0; }
+.pq-seal {
+  position: absolute;
+  top: -12px;
+  left: -10px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ef6a52, #c63a2b);
+  box-shadow: 0 4px 10px rgba(198, 58, 43, .4);
+  font-size: .9rem;
+}
+
+.pq-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 6px;
+}
+.pq-share .pq-cta { margin-top: 12px; }
+.pq-cta.pq-wa { background: linear-gradient(180deg, #31d56f, #1fb858); box-shadow: 0 10px 22px rgba(31, 184, 88, .3); }
+.pq-cta.pq-mail { background: linear-gradient(180deg, #7b8c62, #5d6b4a); box-shadow: 0 10px 22px rgba(93, 107, 74, .3); }
+
+.pq-restart {
+  display: block;
+  margin: 14px auto 0;
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: .85rem;
+  color: var(--pq-muted);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ===== হৃদয়ের বৃষ্টি ===== */
+.pq-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 70;
+}
+.pq-heart {
+  position: absolute;
+  bottom: -40px;
+  animation: pq-rise var(--d, 3s) ease-out forwards;
+}
+@keyframes pq-rise {
+  0%   { transform: translate(0, 0) scale(.6); opacity: 0; }
+  12%  { opacity: 1; }
+  100% { transform: translate(var(--x, 0), -105vh) scale(1.1) rotate(var(--r, 0deg)); opacity: 0; }
+}
+
+/* ===== ছোট স্ক্রিন ===== */
+@media (max-width: 480px) {
+  .proposal-section { padding: 50px 12px 70px; }
+  .pq-card { padding: 30px 18px 24px; border-radius: 24px; }
+  .pq-fields { grid-template-columns: 1fr; }
+  .pq-share { flex-direction: column; }
+  .pq-share .pq-cta { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pq-spin, .pq-sway { animation: none; }
+  .pq-heart { display: none; }
+}

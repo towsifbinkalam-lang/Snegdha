@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শুভ জন্মদিন 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Galada = হাতের লেখার মতো বাংলা ফন্ট -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Galada&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+  <!-- proposal.html এর কাজের ডিজাইন -->
+  <link rel="stylesheet" href="./assets/style/proposal.css">
+
+
+ <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <!-- ব্যানার / হিরো সেকশন -->
+  <header class="hero">
+    <div class="hero-content">
+      <span class="badge">🎂 আজ একটি বিশেষ দিন</span>
+      <h1>শুভ জন্মদিন,<br><span id="receiverName">প্রিয়</span>!</h1>
+      <p class="subtitle" id="heroMessage"></p>
+      <div class="hero-buttons">
+        <button class="btn primary" id="celebrateBtn">🎉 উদযাপন করো</button>
+        <a href="#letter" class="btn ghost">💌 চিঠি পড়ো</a>
+      </div>
+    </div>
+
+    <!-- দড়িতে ঝোলানো স্মৃতির ছবি (script.js এর photos থেকে আসে) -->
+    <div class="garland" id="garland" aria-label="আমাদের স্মৃতির ছবি"></div>
+  </header>
+
+  <!-- শুভেচ্ছা কার্ড -->
+  <section class="wishes">
+    <h2>তোমার জন্য শুভকামনা জয়ন্তী</h2>
+    <div class="wish-grid">
+      <div class="wish-card">
+        <div class="icon">😊</div>
+        <h3>সুখ</h3>
+        <p>তোমার প্রতিটি দিন হাসিতে ভরে উঠুক।</p>
+      </div>
+      <div class="wish-card">
+        <div class="icon">🕊️</div>
+        <h3>শান্তি</h3>
+        <p>তোমার জীবন হোক শান্ত আর মায়াময়।</p>
+      </div>
+      <div class="wish-card">
+        <div class="icon">🏆</div>
+        <h3>সাফল্য</h3>
+        <p>তোমার সব স্বপ্ন সত্যি হোক, সামনে এগিয়ে চলো।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- চিঠি সেকশন -->
+  <section class="letter-section" id="letter">
+    <h2>তোমার জন্য একটি উড়োচিঠি</h2>
+    <p class="hint" id="hint">খামটিতে ক্লিক করে চিঠিটি খুলো 👇</p>
+
+    <div class="envelope-wrap" id="envelopeWrap">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="চিঠি খুলুন">
+        <div class="env-back"></div>
+        <div class="env-flap"></div>
+        <div class="env-front"></div>
+        <div class="heart">❤</div>
+      </div>
+    </div>
+
+    <!-- চিঠির পৃষ্ঠাগুলো script.js থেকে এখানে বসবে -->
+    <div class="letter-pages" id="letterPages" hidden></div>
+
+    <div class="download-box" id="downloadBox" hidden>
+      <button class="btn primary" id="downloadImg">🖼️ ছবি হিসেবে ডাউনলোড</button>
+      <button class="btn secondary" id="downloadTxt">📄 টেক্সট হিসেবে ডাউনলোড</button>
+      <button class="btn ghost dark" id="printBtn">🖨️ প্রিন্ট / PDF</button>
+    </div>
+
+    <!-- ধন্যবাদ জানানোর অংশ: খাম খুললে দেখা যাবে -->
+    <div class="thanks-box" id="thanksBox" hidden>
+      <h3>কমেন্ট জানাতে পারো? 💌</h3>
+      <p class="thanks-sub">চিঠিটা কেমন লাগলো, নিচে লিখে সরাসরি আমার কাছে পাঠিয়ে দাও।</p>
+      <textarea id="thanksMsg" aria-label="তোমার বার্তা" placeholder="এখানে তোমার কথা লেখো..."></textarea>
+      <div class="thanks-actions">
+        <button type="button" class="btn whatsapp" id="waBtn">💬 হোয়াটসঅ্যাপে পাঠাও</button>
+        <button type="button" class="btn email" id="mailBtn">✉️ ইমেইলে পাঠাও</button>
+      </div>
+      <button type="button" class="link-btn" id="mailtoBtn">Gmail ছাড়া অন্য ইমেইল অ্যাপ ব্যবহার করো? এখানে চাপো</button>
+      <p class="thanks-note">বাটনে চাপলে হোয়াটসঅ্যাপ/ইমেইল খুলবে, সেখান থেকে "Send" চাপলেই বার্তা চলে যাবে।</p>
+    </div>
+  </section>
+
+  <!-- 💌 proposal.html এর কাজ: "ঘুরতে যাবে?" প্রস্তাব (ফুটারের ঠিক আগে) -->
+  <section class="proposal-section" id="proposal">
+    <div id="proposalRoot"></div>
+  </section>
+
+  <footer>
+    <p>Copyright © All Rights Reserved - Towsif Bin Kalam<span class="pulse">❤</span></p>
+  </footer>
+
+  <script src="contact.js"></script>
+  <script src="photos.js"></script>
+  <script src="bg-data.js"></script>
+  <script src="script.js"></script>
+  <script src="./assets/js/proposal.js"></script>
+</body>
+</html>
